@@ -1,4 +1,4 @@
-<%- include('./layout/navbar.ejs') %> 
+<%- include('./layout/navbar.ejs') %>
 
 <div class="pt-5">
     <div class="container mt-5">
@@ -25,12 +25,15 @@
                         <td> <%- persons[index].middlename  %>  </td>
                         <td> <%- persons[index].lastname  %>  </td>
                         <td> <%- persons[index].age  %>  </td>
-                        <td><a href="persons/<%- index %> ">Update</a></td>
+                        <td class="d-flex">
+                            <a href="person/<%- index %> " class="btn btn-primary">Update</a>
+                            <form action="/delete/<%- index %>" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
+                        </td>
                     </tr>
                 <% } %>
             <% } else { %>
                 <tr><td colspan="9" class="text-center">No Data Found</td></tr>
-            <% } %> 
+            <% } %>
             </tbody>
         </table>
     </div>

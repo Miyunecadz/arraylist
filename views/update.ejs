@@ -1,0 +1,46 @@
+<%- include('./layout/navbar.ejs') %>
+
+<div class="mt-5">
+    <div class="container">
+
+        <% if (error) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%- error  %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% } %>
+
+        <div class="row justify-content-center">
+            <div class="col-sm-5 ">
+                <form action="/person/<%- id %>" method="post" id="add-person-form">
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" class="form-control" name="firstname" id="firstname" value="<%- person.firstname %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="middlename">Middlename</label>
+                        <input type="text" class="form-control" name="middlename" id="middlename" value="<%- person.middlename %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" class="form-control" name="lastname" id="lastname" value="<%- person.lastname %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" name="age" id="age" value="<%- person.age %>">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- <script src="/js/add-person.js" defer></script> -->

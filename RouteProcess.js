@@ -31,5 +31,33 @@ exports.insert = (req,res) => {
 }
 
 exports.display = (req,res) => {
-    
+    let person = list.displayOneByIndex(req.params.id)
+    res.render('update.ejs', {id: req.params.id, person: person, error: ""})
+}
+
+exports.update = (req,res) => {
+    let person = list.displayOneByIndex(req.params.id)
+    // console.log(req.body)
+    if(req.body.firstname === "" && req.body.middlename === "" && req.body.lastname === "" && req.body.age === "")
+    {
+        return res.render('update.ejs', {error: "Unable to save new person", id: req.params.id, person: person})
+    }
+
+    let values = {}
+    values.firstname = req.body.firstname
+    values.middlename = req.body.middlename
+    values.lastname = req.body.lastname
+    values.age = req.body.age
+
+    let response = list.update(req.params.id, values)
+
+    return res.redirect('/')
+}
+
+exports.delete = (req,res) => {
+    let id = req.params.id
+
+    let response = list.deleteOneByIndex(id)
+
+    res.redirect('/')
 }
